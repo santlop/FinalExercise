@@ -1,10 +1,10 @@
 # Compiled class file
 *.class
 *.classpath
-.classpath
+
 .settings/*
-.project
 *.project
+
 
 # Log file
 *.log
