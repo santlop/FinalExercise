@@ -36,10 +36,9 @@ public class University {
     }
 	
 
-	private List<Teacher> randomTeacher() {
-		List<Teacher> teac = new ArrayList<Teacher>();
-		teac.add(teacher.get(util.random(3)));
-        return teac;
+	private Teacher randomTeacher() {
+		Teacher teac = teacher.get(util.random(3));
+        return  teac;
     }
 	
 	private List<Student> randomStudent() {		
@@ -128,26 +127,26 @@ public class University {
 					System.out.println("Name: " + subjectp.getName()  +"\n"
 									+ "Classroom: " + subjectp.getClassroom()  +"\n");	
 					
-					for (Teacher teacherc : subjectp.getTeacher()) {
-						if(teacherc.getType() == 1) {
+					Teacher teacc = subjectp.getTeacher();
+						if(teacc.getType() == 1) {
 							
-							System.out.println("Teacher: \n	Name:" + teacherc.getName()
-												+ "\n	National ID: " + teacherc.getId()
+							System.out.println("Teacher: \n	Name:" + teacc.getName()
+												+ "\n	National ID: " + teacc.getId()
 												+ "\n	Type: Full time" 
-												+ "\n	Base salary: " + teacherc.getBase_salary()
-												+ "\n	Experience: " + ((Teacher_full_time) teacherc).getExperience()
-												+ "\n	Salary: " + ((Teacher_full_time) teacherc).calculateSalary() + "\n");
+												+ "\n	Base salary: " + teacc.getBase_salary()
+												+ "\n	Experience: " + ((Teacher_full_time) teacc).getExperience()
+												+ "\n	Salary: " + ((Teacher_full_time) teacc).calculateSalary() + "\n");
 							
-						}else if(teacherc.getType() == 2) {
+						}else if(teacc.getType() == 2) {
 							
-							System.out.println("Teacher: \n	Name:" + teacherc.getName() 
-												+ "\n	National ID: " + teacherc.getId()
+							System.out.println("Teacher: \n	Name:" + teacc.getName() 
+												+ "\n	National ID: " + teacc.getId()
 												+ "\n	Type: Part time" 
-												+ "\n	Base salary: " + teacherc.getBase_salary()
-												+ "\n	Hours active: " + ((Teacher_part_time) teacherc).getHour_active()
-												+ "\n	Salary: " + ((Teacher_part_time) teacherc).calculateSalary() + "\n");
+												+ "\n	Base salary: " + teacc.getBase_salary()
+												+ "\n	Hours active: " + ((Teacher_part_time) teacc).getHour_active()
+												+ "\n	Salary: " + ((Teacher_part_time) teacc).calculateSalary() + "\n");
 						}
-					}
+					
 					
 					int count2 = 1;
 					System.out.println("Students: ");
@@ -231,7 +230,7 @@ public class University {
 		int num = read.nextInt();
 		System.out.println("Please enter the national ID of the teacher: ");
 		int idt = read.nextInt();		
-		List<Teacher> teach = findTeacher(idt);
+		Teacher teach = findTeacher(idt);
 		if(teach != null) {
 			List<Student> studentclass = new ArrayList<Student>();
 			Subject subjectc = new Subject(name, idt, teach, studentclass);			
@@ -244,16 +243,17 @@ public class University {
 		
 	}
 	
-	private List<Teacher> findTeacher(int idt) {
+	private Teacher findTeacher(int idt) {
 		int pos = -1;
 		
 		for (Teacher teacherp : getTeacherList()) {
 			if(teacherp.getId() == idt) {
 					pos = pos + 1;
+					return teacherp;
 			}
 		}		
 		getTeacherList().get(pos);
-        return teacher;
+        return null;
     }
 	
 	private Student findStudent(int idst) {		

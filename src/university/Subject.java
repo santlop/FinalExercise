@@ -5,10 +5,10 @@ import java.util.*;
 public class Subject {
 	private String name;
 	private int classroom;
-	private List<Teacher> teacher;
+	private Teacher teacher;
 	private List<Student> studentList;
 	
-	public Subject(String name, int classroom, List<Teacher> teacher, List<Student> studentList) {
+	public Subject(String name, int classroom, Teacher teacher, List<Student> studentList) {
 		this.name = name;
 		this.classroom = classroom;
 		this.teacher = teacher;
@@ -31,11 +31,11 @@ public class Subject {
 		this.classroom = classroom;
 	}
 
-	public List<Teacher> getTeacher() {
+	public Teacher getTeacher() {
 		return teacher;
 	}
 
-	public void setTeacher(List<Teacher> teacher) {
+	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
 
